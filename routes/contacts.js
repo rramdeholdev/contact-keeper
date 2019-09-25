@@ -90,8 +90,8 @@ router.put("/:id", auth, async (req, res) => {
     );
 
     res.json(contact);
-  } catch (err) {
-    console.error(er.message);
+  } catch (error) {
+    console.error(error.message);
     res.status(500).send("Server Error");
   }
 });
@@ -115,8 +115,8 @@ router.delete("/:id", auth, async (req, res) => {
     res.json({
       msg: "Contact Removed"
     });
-  } catch (err) {
-    console.error(er.message);
+  } catch (error) {
+    console.error(error.message);
     res.status(500).send("Server Error");
   }
 });
