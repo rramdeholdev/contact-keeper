@@ -1,6 +1,5 @@
 import React, { useReducer } from "react";
 import axios from "axios";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
 import AuthContext from "./authContext";
 import authReducer from "./authReducer";
 import setAuthToken from "../../utils/setAuthToken";
@@ -68,12 +67,31 @@ const AuthState = props => {
   };
 
   // LOGIN USER
-  const login = () => {
-    console.log("login user");
+  const login = async formData => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    };
+    try {
+      const res = await axios.post("/api/auth", formData, config);
+      dispatch({
+        type: LOGIN_SUCCESS,
+        payload: res.data
+      });
+      loadUser();
+    } catch (error) {
+      dispatch({
+        type: LOGIN_FAIL,
+        payload: error.response.data.msg
+      });
+    }
   };
   // LOGOUT
   const logout = () => {
-    console.log("logout user");
+    dispatch({
+      type: LOGOUT
+    });
   };
   // CLEAR ERRROS
   const clearErrors = () => {

@@ -8,13 +8,7 @@ const Register = props => {
   const authContext = useContext(AuthContext);
 
   const { setAlert } = alertContext;
-  const {
-    register,
-    error,
-    clearErrors,
-    loadUser,
-    isAuthenticated
-  } = authContext;
+  const { register, error, clearErrors, isAuthenticated } = authContext;
 
   // Lifecylcle Methods
   useEffect(() => {

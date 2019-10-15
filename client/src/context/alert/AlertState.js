@@ -1,6 +1,5 @@
 import React, { useReducer } from "react";
 import uuid from "uuid";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
 import AlertContext from "./alertContext";
 import alertReducer from "./alertReducer";
 import { SET_ALERT, REMOVE_ALERT } from "../types";
